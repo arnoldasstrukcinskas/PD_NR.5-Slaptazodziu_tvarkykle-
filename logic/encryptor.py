@@ -1,5 +1,6 @@
+import json
 import os
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 
 from Crypto.Cipher import AES
 from Crypto.Protocol.KDF import PBKDF2
@@ -22,7 +23,7 @@ class Program:
 class User:
     username: str
     password: str
-    programs: list
+    programs: list[Program]
 
 
 class Encryptor(QObject):
@@ -50,18 +51,43 @@ class Encryptor(QObject):
 
         return cyphered_text
 
-    def write_to_txt(self):
-        file_path = os.path.join(self.save_dir, "passwords.txt")
+    def create_user(self, user: User):
+        print(user)
+        self.write_to_txt(user)
+
+    def write_to_txt(self, user: User):
+        file_path = os.path.join(self.save_dir, f"{user.username}.txt")
 
         with open(file_path, "w", encoding="utf-8") as file:
-            for password in self.passwords:
-                file.write(f"{password}\n")
+            json.dump(asdict(user), file, indent=4)
 
-    def read_from_txt(self):
-        self.passwords = []
+    def check_user(self, username: str) -> bool:
+        file_path = os.path.join(self.save_dir, f"{username}.txt")
 
-        file_path = os.path.join(self.save_dir, "passwords.txt")
+        if not os.path.exists(file_path):
+            return False
+
+        return True
+
+    def read_from_txt(self, username: str):
+        file_path = os.path.join(self.save_dir, f"{username}.txt")
 
         with open(file_path, "r", encoding="utf-8") as file:
-            for password in file:
-                self.passwords.append(password)
+            data = json.load(file)
+
+        programs: list[Program] = []
+
+        for program_data in data["programs"]:
+            program = Program(
+                name=program_data["name"],
+                password=program_data["password"],
+                url=program_data["url"],
+                notes=program_data["notes"],
+            )
+            programs.append(program)
+
+        user = User(
+            username=data["username"], password=data["password"], programs=programs
+        )
+
+        return user

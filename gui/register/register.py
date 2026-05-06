@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from PyQt5.QtWidgets import *
 
 from gui.register.register_ui import Ui_Form
-from logic.encryptor import Program, User
+from logic.encryptor import Encryptor, Program, User
 
 if TYPE_CHECKING:
     from main.mainwindow import MainWindow
@@ -11,9 +11,10 @@ if TYPE_CHECKING:
 
 class RegisterWidget(Ui_Form, QWidget):
 
-    def __init__(self, parent: "MainWindow"):
+    def __init__(self, parent: "MainWindow", encryptor: Encryptor):
         super().__init__(parent=parent)
         self._mainwindow = parent
+        self.encryptor = encryptor
         self.setMaximumSize(600, 600)
         self.setupUi(self)
 
@@ -44,6 +45,7 @@ class RegisterWidget(Ui_Form, QWidget):
         program = Program(programName, programPassword, url, notes)
 
         user.programs.append(program)
+        self.encryptor.create_user(user)
 
         self._mainwindow.set_login_window()
         self.clear_fields()

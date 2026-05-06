@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 
 from gui.login.login_ui import Ui_Form
 from logic.authenticator import Authenticator
+from logic.encryptor import Encryptor
 
 if TYPE_CHECKING:
     from main.mainwindow import MainWindow
@@ -15,5 +16,22 @@ class LoginWidget(Ui_Form, QWidget):
         super().__init__(parent=parent)
         self.setMaximumSize(400, 400)
         self.setupUi(self)
+        self._mainWindow = parent
         self.authenticator = authenticator
-        print("login")
+
+        self.registrationPushButton.clicked.connect(
+            self._mainWindow.set_register_window
+        )
+        self.loginPushButton.clicked.connect(self.login)
+
+    def login(self):
+        username = self.usernameLineEdit.text()
+        password = self.passwordLineEdit.text()
+
+        self.authenticator.login(username, password)
+
+        if not self.authenticator.loged_user:
+            QMessageBox.information(self, "Klaida", "Neteisingi prisijungimo duomenys")
+            return
+
+        self._mainWindow.set_main_window()

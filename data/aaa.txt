@@ -1,0 +1,12 @@
+{
+    "username": "aaa",
+    "password": "aaa",
+    "programs": [
+        {
+            "name": "aaa",
+            "password": "aaa",
+            "url": "aaa",
+            "notes": "aaa"
+        }
+    ]
+}

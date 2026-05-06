@@ -21,19 +21,14 @@ class MainWindow(Ui_MainWindow, QMainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.authenticator = Authenticator()
         self.encryptor = Encryptor()
+        self.authenticator = Authenticator(self.encryptor)
         self.formWidget = FormWidget(self, self.encryptor)
-        self.registerWidget = RegisterWidget(self)
+        self.registerWidget = RegisterWidget(self, self.encryptor)
         self.loginWidget = LoginWidget(self, self.authenticator)
         self.program_ui_initializer()
 
         # Login widget buttons
-
-        self.loginWidget.registrationPushButton.clicked.connect(
-            self.set_register_window
-        )
-        self.loginWidget.loginPushButton.clicked.connect(self.set_main_window)
 
         # Main window buttons
         self.formWidget.logoutPushButton.clicked.connect(self.logout)

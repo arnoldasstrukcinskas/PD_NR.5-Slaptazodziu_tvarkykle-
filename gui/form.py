@@ -15,8 +15,8 @@ BITS256 = 256
 
 class FormWidget(Ui_Form, QWidget):
 
-    def __init__(self, parent: "MainWindow"):
+    def __init__(self, parent: "MainWindow", encryptor: Encryptor):
         super().__init__(parent=parent)
-        self.setMinimumSize(400, 400)
+        self.setMaximumSize(800, 800)
         self.setupUi(self)
-        self.encryptor = Encryptor()
+        self.encryptor = encryptor

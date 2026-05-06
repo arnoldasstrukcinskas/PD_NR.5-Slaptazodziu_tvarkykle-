@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>436</width>
-    <height>470</height>
+    <width>746</width>
+    <height>606</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="text">
-      <string>AES šifravimo aplikacija</string>
+      <string>Valdymo panelė</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -41,139 +41,202 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="cypherModeLabel">
-     <property name="text">
-      <string>Režimas</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QComboBox" name="cypherModeComboBox">
+    <layout class="QHBoxLayout" name="userDataHorizontalLayout">
      <item>
-      <property name="text">
-       <string>Pasirinkite</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>ECB</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>CBC</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>CFB</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Rakto ilgis</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QRadioButton" name="bits128RadioButton">
+      <widget class="QLabel" name="userDataLabel">
        <property name="text">
-        <string>128 bitai</string>
+        <string>Prisijungęs vartotojas -  </string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="bits192RadioButton">
+      <widget class="QLabel" name="emptySpaceLabel">
        <property name="text">
-        <string>192 bitai</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="bits256RadioButton">
+      <widget class="QPushButton" name="logoutPushButton">
        <property name="text">
-        <string>256 bitai</string>
+        <string>Atsijungti</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="keyLabel">
+    <widget class="QLabel" name="savedProgramsLabel">
      <property name="text">
-      <string>Įveskite raktą:</string>
+      <string>Išsaugotos programos:</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPlainTextEdit" name="keyTextEdit">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>50</height>
-      </size>
-     </property>
+    <widget class="QComboBox" name="programsComboBox">
+     <item>
+      <property name="text">
+       <string>Pasirinkite</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="inputLabel">
+    <widget class="QLabel" name="findProgramLabel">
      <property name="text">
-      <string>Įveskite frazę, kurią šifruosite</string>
+      <string>Programų paieška:</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="inputTextEdit"/>
+    <layout class="QHBoxLayout" name="findProgramHorizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="findProgramLineEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="findProgramPushButton">
+       <property name="text">
+        <string>Rasti</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="emptySpaceLabel_2">
+       <property name="text">
+        <string>                                     </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="newPgogramPushButton">
+       <property name="text">
+        <string>Nauja programa</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="programLabel">
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Programa</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="Line" name="line_2">
+     <property name="sizeIncrement">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="lineWidth">
+      <number>5</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="resultLabel_2">
-     <property name="text">
-      <string>Rezultatas:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPlainTextEdit" name="resultTextEdit">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(177, 177, 177);</string>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="resultLabel">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QPushButton" name="cypherPushButton">
+      <widget class="QLabel" name="programNameLabel">
        <property name="text">
-        <string>Šifruoti</string>
+        <string>Pavadinimas:  </string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="decypherPushButton">
+      <widget class="QLineEdit" name="programNameLineEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="programPasswordLabel">
        <property name="text">
-        <string>Dešifruoti</string>
+        <string>Slaptažodis:   </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="programPasswordLineEdit"/>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="showPasswordCheckBox">
+       <property name="text">
+        <string>Rodyti slaptažodį</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="programUrlLabel">
+       <property name="text">
+        <string>URL:               </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="programUrlLineEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="programNotesLabel">
+       <property name="text">
+        <string>Pastabos:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="programNotesTextEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="updatePasswordPushButton">
+       <property name="text">
+        <string>Atnaujinti slaptažodį</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addProgramPushButton">
+       <property name="text">
+        <string>Pridėti įrašą</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removeProgramPushButton">
+       <property name="text">
+        <string>Pašalinti įrašą</string>
        </property>
       </widget>
      </item>

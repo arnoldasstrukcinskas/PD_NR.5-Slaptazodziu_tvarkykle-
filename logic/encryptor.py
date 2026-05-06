@@ -11,12 +11,18 @@ BITS256 = 256
 
 
 @dataclass
-class User:
-    username: str
+class Program:
     name: str
     password: str
     url: str
-    nots: str
+    notes: str
+
+
+@dataclass
+class User:
+    username: str
+    password: str
+    programs: list
 
 
 class Encryptor(QObject):

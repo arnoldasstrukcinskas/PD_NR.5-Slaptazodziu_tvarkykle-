@@ -14,7 +14,7 @@ class LoginWidget(Ui_Form, QWidget):
 
     def __init__(self, parent: "MainWindow", authenticator: Authenticator):
         super().__init__(parent=parent)
-        self.setMaximumSize(400, 400)
+        self.setMaximumSize(400, 300)
         self.setupUi(self)
         self._mainWindow = parent
         self.authenticator = authenticator
@@ -35,6 +35,7 @@ class LoginWidget(Ui_Form, QWidget):
             return
 
         self._mainWindow.set_main_window()
+        self._mainWindow.load_form_widget()
         self.clear_ui()
 
     def clear_ui(self):

@@ -3,6 +3,7 @@ import os
 import platform
 
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QCloseEvent
 from PyQt5.QtWidgets import *
 
 from gui.form import FormWidget
@@ -28,19 +29,6 @@ class MainWindow(Ui_MainWindow, QMainWindow):
         self.loginWidget = LoginWidget(self, self.authenticator)
         self.program_ui_initializer()
 
-        # Main window buttons
-        self.formWidget.logoutPushButton.clicked.connect(self.logout)
-        self.formWidget.findProgramPushButton.clicked.connect(self.find_program)
-        self.formWidget.newPgogramPushButton.clicked.connect(self.new_program)
-        self.formWidget.showPasswordCheckBox.clicked.connect(self.show_password)
-        self.formWidget.updatePasswordPushButton.clicked.connect(self.update_password)
-        self.formWidget.addProgramPushButton.clicked.connect(self.add_program)
-        self.formWidget.removeProgramPushButton.clicked.connect(self.remove_program)
-
-        # Action buttons
-        self.actionSave.triggered.connect(self.save_to_txt)
-        self.actionOpen.triggered.connect(self.open_txt)
-
     def program_ui_initializer(self):
         self.verticalLayout_2.addWidget(self.loginWidget)
         self.resize(400, 400)
@@ -53,7 +41,7 @@ class MainWindow(Ui_MainWindow, QMainWindow):
 
         self.verticalLayout_2.addWidget(self.registerWidget)
         self.registerWidget.show()
-        self.resize(600, 600)
+        self.resize(400, 400)
 
     def set_login_window(self):
         self.verticalLayout_2.removeWidget(self.registerWidget)
@@ -64,7 +52,7 @@ class MainWindow(Ui_MainWindow, QMainWindow):
 
         self.verticalLayout_2.addWidget(self.loginWidget)
         self.loginWidget.show()
-        self.resize(400, 400)
+        self.resize(400, 300)
 
     def set_main_window(self):
         self.verticalLayout_2.removeWidget(self.loginWidget)
@@ -75,29 +63,12 @@ class MainWindow(Ui_MainWindow, QMainWindow):
 
         self.resize(800, 800)
 
-    def find_program(self):
-        print("searching")
-
-    def new_program(self):
-        print("new program")
-
-    def add_program(self):
-        print("add program")
-
-    def update_password(self):
-        print("renewing password")
-
-    def remove_program(self):
-        print("remove program")
-
-    def show_password(self):
-        print("showing password")
+    def load_form_widget(self):
+        self.formWidget.load_form()
 
     def logout(self):
         self.set_login_window()
 
-    def save_to_txt(self):
-        self.formWidget.save_to_txt()
-
-    def open_txt(self):
-        self.formWidget.open_txt()
+    def closeEvent(self, event: QCloseEvent) -> None:
+        self.authenticator.logout()
+        event.accept()

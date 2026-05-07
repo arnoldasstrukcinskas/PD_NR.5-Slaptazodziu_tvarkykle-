@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>459</width>
-    <height>424</height>
+    <height>295</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -68,46 +68,6 @@
      </item>
      <item>
       <widget class="QLineEdit" name="passwordRetypeLineEdit"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="nameLabel">
-       <property name="text">
-        <string>Pavadinimas:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="nameLineEdit"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="programPasswordLabel">
-       <property name="text">
-        <string>Programos slaptažodis:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="programPasswordLineEdit"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="urlLabel">
-       <property name="text">
-        <string>URL:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="urlLineEdit"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="notesLabel">
-       <property name="text">
-        <string>Pastabos:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="notesPlainTextEdit"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">

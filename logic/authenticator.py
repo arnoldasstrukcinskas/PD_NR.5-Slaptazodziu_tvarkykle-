@@ -16,13 +16,23 @@ class Authenticator(QObject):
         if not user:
             return
 
-        if self.verify_user(user, username, password):
-            programs = self.encryptor.read_programs_from_txt(username)
-            self.loged_user = User(
-                username=username, password=password, programs=programs
-            )
+        if not self.verify_user(user, username, password):
+            return False
+
+        self.encryptor.user_key = password
+        programs = self.encryptor.aes_decipher_programs(username)
+
+        self.loged_user = User(username=username, password=password, programs=programs)
+
+        # if not self.loged_user.programs:
+        #     return
+
+        return True
 
     def logout(self):
+        username = self.loged_user.username
+        print(username)
+        self.encryptor.aes_cipher_programs(username)
         self.loged_user = None
 
     def check_user(self, username: str) -> User:

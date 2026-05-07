@@ -35,3 +35,8 @@ class LoginWidget(Ui_Form, QWidget):
             return
 
         self._mainWindow.set_main_window()
+        self.clear_ui()
+
+    def clear_ui(self):
+        self.usernameLineEdit.setText("")
+        self.passwordLineEdit.setText("")

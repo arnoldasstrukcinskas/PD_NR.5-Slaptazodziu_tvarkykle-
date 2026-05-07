@@ -1,0 +1,6 @@
+[
+    {
+        "username": "iizHmwiG2bvn1ixnci+H2Q==$SpjYctU2g7/83vkd8zKGfMwKLuvmxNnjwzZq+gxWB4g=",
+        "password": "JVQfTJOQNJ6RhZA2IJdncQ==$Qrm9bVPn7aD9LatIhcXaszvj5HTkTgZLoiRdXE5bPDk="
+    }
+]

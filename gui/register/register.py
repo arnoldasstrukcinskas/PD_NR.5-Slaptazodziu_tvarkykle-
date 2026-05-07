@@ -41,12 +41,11 @@ class RegisterWidget(Ui_Form, QWidget):
             QMessageBox.critical(self, "Klaida", "slaptažodžiai nesutampa")
             return
 
-        user = User(username, password, programs)
+        user = User(username, password)
         program = Program(programName, programPassword, url, notes)
 
         user.programs.append(program)
         self.encryptor.create_user(user)
-
         self._mainwindow.set_login_window()
         self.clear_fields()
         self.reset_ui()

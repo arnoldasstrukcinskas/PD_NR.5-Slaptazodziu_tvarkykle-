@@ -23,12 +23,10 @@ class MainWindow(Ui_MainWindow, QMainWindow):
         self.setupUi(self)
         self.encryptor = Encryptor()
         self.authenticator = Authenticator(self.encryptor)
-        self.formWidget = FormWidget(self, self.encryptor)
+        self.formWidget = FormWidget(self, self.encryptor, self.authenticator)
         self.registerWidget = RegisterWidget(self, self.encryptor)
         self.loginWidget = LoginWidget(self, self.authenticator)
         self.program_ui_initializer()
-
-        # Login widget buttons
 
         # Main window buttons
         self.formWidget.logoutPushButton.clicked.connect(self.logout)
@@ -60,6 +58,9 @@ class MainWindow(Ui_MainWindow, QMainWindow):
     def set_login_window(self):
         self.verticalLayout_2.removeWidget(self.registerWidget)
         self.registerWidget.hide()
+
+        self.verticalLayout_2.removeWidget(self.formWidget)
+        self.formWidget.hide()
 
         self.verticalLayout_2.addWidget(self.loginWidget)
         self.loginWidget.show()

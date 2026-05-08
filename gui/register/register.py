@@ -18,9 +18,10 @@ class RegisterWidget(Ui_Form, QWidget):
         self.setMaximumSize(400, 400)
         self.setupUi(self)
 
-        # Register widget buttons
-        self.backPushButton.clicked.connect(self._mainwindow.set_login_window)
+        self.passwordLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
+        self.passwordRetypeLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
+        self.backPushButton.clicked.connect(self._mainwindow.set_login_window)
         self.registerPushButton.clicked.connect(self.register)
 
     def register(self):

@@ -1,0 +1,16 @@
+[
+    {
+        "name": "eqICd8e/7tma",
+        "password": "CfSWkx96r9U8XfQL",
+        "url": "wzgNEg==",
+        "notes": "PRgs7YAEPVk=",
+        "iv": "EUHrYC1rGYE4LdLqkUYJQw=="
+    },
+    {
+        "name": "tA/kJQcCIy0=",
+        "password": "pRj8vQBZik66",
+        "url": "1nxj",
+        "notes": "p8vumds5KA==",
+        "iv": "kNNE3XwQzeL0nzjapqOHRg=="
+    }
+]

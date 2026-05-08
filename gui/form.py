@@ -32,6 +32,7 @@ class FormWidget(Ui_Form, QWidget):
         self.showPasswordCheckBox.clicked.connect(self.hide_password)
         self.findProgramPushButton.clicked.connect(self.find_program)
         self.addProgramPushButton.clicked.connect(self.add_program)
+        self.updatePasswordPushButton.clicked.connect(self.update_program_password)
         self.removeProgramPushButton.clicked.connect(self.remove_program)
         self.programPasswordLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
@@ -62,8 +63,8 @@ class FormWidget(Ui_Form, QWidget):
             if program.name == program_name:
                 self.load_program(program_name)
                 return
-            else:
-                QMessageBox.information(self, "Klaida", "Tokios programos nėra")
+
+        QMessageBox.information(self, "Klaida", "Tokios programos nėra")
 
     def hide_password(self):
         if not self.showPasswordCheckBox.isChecked():
@@ -72,6 +73,7 @@ class FormWidget(Ui_Form, QWidget):
             self.programPasswordLineEdit.setEchoMode(QLineEdit.EchoMode.Normal)
 
     def load_user_programs(self):
+        self.authenticator.load_programs()
         user = self.authenticator.loged_user
 
         if not user:
@@ -94,6 +96,35 @@ class FormWidget(Ui_Form, QWidget):
 
     def add_program(self):
         username = self.authenticator.loged_user.username
+        program = self.get_program_object()
+
+        self.encryptor.add_program_to_txt(username, program)
+        self.load_user_programs()
+
+        QMessageBox.information(self, "Pranešimas", "Programa sėkmingai pridėta")
+
+    def update_program_password(self):
+        username = self.authenticator.loged_user.username
+
+        program = self.get_program_object()
+
+        self.encryptor.remove_program_from_txt(username, program.name)
+        self.encryptor.add_program_to_txt(username, program)
+
+        self.load_user_programs()
+
+        QMessageBox.information(self, "Pranešimas", "Programos slaptažodis atnaujintas")
+
+    def remove_program(self):
+        username = self.authenticator.loged_user.username
+        program_name = self.programNameLineEdit.text()
+
+        self.encryptor.remove_program_from_txt(username, program_name)
+        self.load_user_programs()
+        self.new_program()
+        QMessageBox.information(self, "Pranešimas", "Programa sėkmingai ištrinta")
+
+    def get_program_object(self) -> Program:
         program_name = self.programNameLineEdit.text()
         program_password = self.programPasswordLineEdit.text()
         program_url = self.programUrlLineEdit.text()
@@ -106,18 +137,7 @@ class FormWidget(Ui_Form, QWidget):
             notes=program_notes,
         )
 
-        self.encryptor.add_program_to_txt(username, program)
-        self.load_user_programs()
-
-        QMessageBox.information(self, "Pranešimas", "Programa sėkmingai pridėta")
-
-    def remove_program(self):
-        username = self.authenticator.loged_user.username
-        program_name = self.programNameLineEdit.text()
-
-        self.encryptor.remove_program_from_txt(username, program_name)
-
-        QMessageBox.information(self, "Pranešimas", "Programa sėkmingai ištrinta")
+        return program
 
     def logout(self):
         self.authenticator.logout()

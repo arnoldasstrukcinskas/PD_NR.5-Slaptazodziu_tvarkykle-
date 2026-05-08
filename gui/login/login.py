@@ -18,6 +18,7 @@ class LoginWidget(Ui_Form, QWidget):
         self.setupUi(self)
         self._mainWindow = parent
         self.authenticator = authenticator
+        self.passwordLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
         self.registrationPushButton.clicked.connect(
             self._mainWindow.set_register_window

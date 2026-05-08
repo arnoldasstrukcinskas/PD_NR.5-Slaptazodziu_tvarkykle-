@@ -76,8 +76,7 @@ class Encryptor(QObject):
     def aes_decipher_programs(self, username: str):
         bytes = self.key_length // 8
         ciphered_programs = self.read_programs_from_txt(username)
-        print("check")
-        print(ciphered_programs)
+
         key = PBKDF2(self.user_key, "fixedSalt", dkLen=bytes, count=10000)
         deciphered_programs: list[Program] = []
 

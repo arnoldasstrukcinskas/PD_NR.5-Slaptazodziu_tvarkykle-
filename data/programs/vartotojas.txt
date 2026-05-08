@@ -12,5 +12,12 @@
         "url": "1nxj",
         "notes": "p8vumds5KA==",
         "iv": "kNNE3XwQzeL0nzjapqOHRg=="
+    },
+    {
+        "name": "DAyP9r20mL4=",
+        "password": "FZ5jFw0g1mjVH1FjP7TLeEQwnGKS3gW6HQu7ruuRn6I=",
+        "url": "x86k",
+        "notes": "tSHJ",
+        "iv": "m+vmIlgp8LjIpJ8/eZACCw=="
     }
 ]

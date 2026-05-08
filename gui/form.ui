@@ -103,7 +103,7 @@
      <item>
       <widget class="QLabel" name="emptySpaceLabel_2">
        <property name="text">
-        <string>                                     </string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -219,6 +219,13 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="generatePasswordPushButton">
+       <property name="text">
+        <string>Sugeneruoti slaptažidį</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="updatePasswordPushButton">
        <property name="text">

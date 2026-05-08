@@ -266,6 +266,10 @@ class Encryptor(QObject):
         hash = base64.b64encode(key).decode()
         return salt_hash, hash
 
+    def generate_password(self) -> str:
+        random_bytes = os.urandom(24)
+        return base64.b64encode(random_bytes).decode("utf-8")
+
     def format_uset_file_text(self, salt_hash, data_hash) -> str:
         return f"{salt_hash}${data_hash}"
 

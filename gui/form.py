@@ -34,6 +34,7 @@ class FormWidget(Ui_Form, QWidget):
         self.addProgramPushButton.clicked.connect(self.add_program)
         self.updatePasswordPushButton.clicked.connect(self.update_program_password)
         self.removeProgramPushButton.clicked.connect(self.remove_program)
+        self.generatePasswordPushButton.clicked.connect(self.generate_random_password)
         self.programPasswordLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
     def load_form(self):
@@ -102,6 +103,10 @@ class FormWidget(Ui_Form, QWidget):
         self.load_user_programs()
 
         QMessageBox.information(self, "Pranešimas", "Programa sėkmingai pridėta")
+
+    def generate_random_password(self):
+        password = self.authenticator.create_random_password()
+        self.programPasswordLineEdit.setText(password)
 
     def update_program_password(self):
         username = self.authenticator.loged_user.username

@@ -62,6 +62,10 @@ class Authenticator(QObject):
 
         return False
 
+    def create_random_password(self) -> str:
+        generated_password = self.encryptor.generate_password()
+        return generated_password
+
     def load_programs(self):
         programs = self.encryptor.read_programs_from_txt(self.loged_user.username)
 
